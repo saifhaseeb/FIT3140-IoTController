@@ -1,0 +1,107 @@
+
+<html>
+
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+
+}
+
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+table tr:nth-child(odd) {
+   background-color:#fff;
+}
+table th {
+    background-color: black;
+    color: white;
+}
+
+
+form{
+     display: inline;
+
+
+}
+</style>
+
+    </head>
+
+<body>
+
+<table style="width:70%">
+
+
+<tr>
+
+<th>
+
+Control Panel
+</th>
+
+</tr>
+  <tr>
+    <td>Switch LED On/Off:
+
+      <form action = "http://127.0.0.1:8081/process_get" method = "POST">
+
+         <input type="Submit" value="On"></form>
+
+                <form action = "http://127.0.0.1:8081/turnoff" method = "POST">
+ <input type="Submit" value="Off"></form>
+
+
+
+
+</td>
+  </tr>
+  <tr>
+    <td><label>Switch Motion Sensor On/Off:
+    <select size="1" name="led">
+        <option value="">Select One ...</option>
+        <option value="on">on</option>
+        <option value="off">off</option>
+
+    </select>
+</label></td>
+  </tr>
+  <tr>
+    <td>Motions Detected  &nbsp
+
+
+    </td>
+  </tr>
+  <tr>
+    <td>Long Motions</td>
+  </tr>
+
+  <tr>
+    <td>Short Motions</td>
+  </tr>
+</table>
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+
+<p id="demo"></p>
+
+</body>
+
+</html>
+
