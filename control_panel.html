@@ -1,15 +1,12 @@
 
 <html>
-
 <head>
 <style>
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
-
 }
-
 table tr:nth-child(even) {
     background-color: #eee;
 }
@@ -20,36 +17,31 @@ table th {
     background-color: black;
     color: white;
 }
-
-
 form{
      display: inline;
-
-
 }
 </style>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
-    </head>
+
 
 <body>
-
-<table style="width:70%">
-
-
+<p id="demo"></p>
+<table style="width:33%">
 <tr>
-
 <th>
-
 Control Panel
 </th>
-
 </tr>
   <tr>
     <td>Switch LED On/Off:
-
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       <form action = "http://127.0.0.1:8081/process_get" method = "POST">
 
-         <input type="Submit" value="On"></form>
+         <input type="Submit" value="On"></form> &nbsp&nbsp&nbsp
 
                 <form action = "http://127.0.0.1:8081/turnoff" method = "POST">
  <input type="Submit" value="Off"></form>
@@ -60,48 +52,62 @@ Control Panel
 </td>
   </tr>
   <tr>
-    <td><label>Switch Motion Sensor On/Off:
-    <select size="1" name="led">
-        <option value="">Select One ...</option>
-        <option value="on">on</option>
-        <option value="off">off</option>
-
-    </select>
+    <td>Switch Motion Sensor On/Off:
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <form action = "http://127.0.0.1:8081/motionon" method = "GET">
+         <input type="Submit" value="On"></form> &nbsp&nbsp&nbsp
+      <form action = "http://127.0.0.1:8081/motionoff" method = "GET">
+ 	<input type="Submit" value="Off"></form>
 </label></td>
   </tr>
   <tr>
-    <td>Motions Detected  &nbsp
+    <td>Motions Detected
+     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+<span  id="t">0</span>
+ <script>
+
+          var socket = io.connect('http://127.0.0.1:8081/');
+          socket.on('news', function(msg){
+              $(' #t ').text(msg);
+
+
+    });
+
+
+  </script>
+
+
+
 
 
     </td>
   </tr>
   <tr>
-    <td>Long Motions</td>
+    <td>Long Motions
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp&nbsp&nbsp&nbsp
+     <form >
+<input type="textfield" value="0" maxlength="4" size="1">
+</form>
+ 	</td>
   </tr>
-
   <tr>
-    <td>Short Motions</td>
+    <td>Short Motions
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    &nbsp&nbsp&nbsp&nbsp
+     <form >
+<input type="textfield" value="0" maxlength="4" size="1">
+</form>
+ 	</td>
   </tr>
 </table>
-
-
 <br/>
 <br/>
 <br/>
-
-
-
-
 <br/>
 <br/>
 <br/>
-
-
-
-
-<p id="demo"></p>
-
 </body>
-
 </html>
 
